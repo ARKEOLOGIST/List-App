@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, Text, View, ToastAndroid } from 'react-native';
-//import MainScreen from './pages/main';
 
 export default class Splash extends React.Component {
     constructor(props) {
@@ -14,14 +13,14 @@ export default class Splash extends React.Component {
         fetch('https://www.mocky.io/v2/5e419e082f0000cb5458368e')
           .then((response) => response.json())
           .then((responseJson) => {
-            this.setState({data: JSON.parse(responseJson)});
+            this.setState({data: responseJson.products});
           })
           .catch((error) => {
             ToastAndroid.show('Oops! An error occurred!' + error, ToastAndroid.SHORT);
           });
-          setTimeout(() => {
+          /*setTimeout(() => {
             this.props.navigation.navigate('List' , { data: this.state.data});
-          }, 3000);
+          }, 3000);*/
       }
 
   render() {

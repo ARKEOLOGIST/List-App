@@ -5,7 +5,7 @@ import MainScreen from './pages/main';
 class App extends Component {
 
   render() {
-    return MainScreen;
+    return <MainScreen/>;
   }
 }
 
