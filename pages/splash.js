@@ -1,8 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View, ToastAndroid } from 'react-native';
+//import MainScreen from './pages/main';
 
 export default class Splash extends React.Component {
-    constructor() {
+    constructor(props) {
+        super(props);
         this.state = {
           data: []
         };
@@ -17,6 +19,9 @@ export default class Splash extends React.Component {
           .catch((error) => {
             ToastAndroid.show('Oops! An error occurred!' + error, ToastAndroid.SHORT);
           });
+          setTimeout(() => {
+            this.props.navigation.navigate('List' , { data: this.state.data});
+          }, 3000);
       }
 
   render() {
