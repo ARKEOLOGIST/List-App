@@ -1,19 +1,26 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import Splash from './pages/splash';
+import MainScreen from './pages/main';
+//import MainScreen from './screens/ProductScreens/productPage';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {currentScreen: 'Splash'};
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        currentScreen: 'MainScreen',
+      });
+    }, 3000);
+  }
+
+  render() {
+    const {currentScreen} = this.state;
+    let mainScreen = currentScreen === 'Splash' ? <Splash /> : <MainScreen />;
+    return mainScreen;
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
