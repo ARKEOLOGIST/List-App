@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, ToastAndroid } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Splash extends React.Component {
     constructor(props) {
@@ -18,15 +19,15 @@ export default class Splash extends React.Component {
           .catch((error) => {
             ToastAndroid.show('Oops! An error occurred!' + error, ToastAndroid.SHORT);
           });
-          /*setTimeout(() => {
+          setTimeout(() => {
             this.props.navigation.navigate('List' , { data: this.state.data});
-          }, 3000);*/
+          }, 3000);
       }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Wait while your data is loading!</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Wait while your data is loading!</Text>
       </View>
     );
   }
