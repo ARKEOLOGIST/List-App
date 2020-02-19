@@ -19,18 +19,15 @@ export default class Splash extends React.Component {
           .catch((error) => {
             ToastAndroid.show('Oops! An error occurred!' + error, ToastAndroid.SHORT);
           });
-          /*setTimeout(() => {
-            this.props.navigation.navigate('List' , { data: this.state.data});
-          }, 3000);*/
+          setTimeout(() => {
+            this.props.navigation.navigate('Menu' , { data: this.state.data});
+          }, 3000);
       }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontWeight: 'bold', fontSize: 20, paddingBottom: '15%' }}>Click here to navigate to the respective screens</Text>
-        <TouchableOpacity style= {{ padding: '10%', backgroundColor: 'blue', opacity: 0.7, width: '60%'}} onPress={() => {this.props.navigation.navigate('List' , { data: this.state.data});}}><Text style={styles.size}>Move to list</Text></TouchableOpacity>
-        <Text style={{padding: '5%'}}>&nbsp;</Text>
-        <TouchableOpacity style= {{ padding: '10%', backgroundColor: 'blue', opacity: 0.7, width: '60%'}} onPress={() => {this.props.navigation.navigate('Search' , { data: this.state.data});}}><Text style={styles.size}>Move to search</Text></TouchableOpacity>
+      <Text style={{fontSize: 20,fontWeight: 'bold'}}>Please wait while your data is loading</Text>
       </View>
     );
   }
@@ -42,9 +39,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  size: {
-    fontSize: 20,
-    alignSelf: "center"
   }
 });

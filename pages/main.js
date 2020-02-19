@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import List from './list';
 import Search from './search';
+import Menu from './menu';
 import Splash from './splash';
 
 const AppNavigator = createStackNavigator(
@@ -13,6 +14,12 @@ const AppNavigator = createStackNavigator(
         },
         Search: {
             screen: Search,
+        },
+        Menu: {
+            screen: Menu,
+            navigationOptions: () => ({
+                headerShown: false,
+              }),
         },
         Splash: {
             screen: Splash,
