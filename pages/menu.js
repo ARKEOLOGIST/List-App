@@ -6,22 +6,8 @@ export default class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          data: []
+          data: this.props.navigation.getParam('data')
         };
-      }
-    
-    componentDidMount() {
-        fetch('https://www.mocky.io/v2/5e419e082f0000cb5458368e')
-          .then((response) => response.json())
-          .then((responseJson) => {
-            this.setState({data: responseJson.products});
-          })
-          .catch((error) => {
-            ToastAndroid.show('Oops! An error occurred!' + error, ToastAndroid.SHORT);
-          });
-          /*setTimeout(() => {
-            this.props.navigation.navigate('List' , { data: this.state.data});
-          }, 3000);*/
       }
 
   render() {
