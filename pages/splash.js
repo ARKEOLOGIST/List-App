@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, ToastAndroid } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, ToastAndroid } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Splash extends React.Component {
@@ -19,15 +19,18 @@ export default class Splash extends React.Component {
           .catch((error) => {
             ToastAndroid.show('Oops! An error occurred!' + error, ToastAndroid.SHORT);
           });
-          setTimeout(() => {
+          /*setTimeout(() => {
             this.props.navigation.navigate('List' , { data: this.state.data});
-          }, 3000);
+          }, 3000);*/
       }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Wait while your data is loading!</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, paddingBottom: '15%' }}>Click here to navigate to the respective screens</Text>
+        <TouchableOpacity style= {{ padding: '10%', backgroundColor: 'blue', opacity: 0.7}} onPress={() => {this.props.navigation.navigate('List' , { data: this.state.data});}}><Text>Move to list</Text></TouchableOpacity>
+        <Text style={{padding: '5%'}}>&nbsp;</Text>
+        <TouchableOpacity style= {{ padding: '10%', backgroundColor: 'blue', opacity: 0.7}} onPress={() => {this.props.navigation.navigate('Search' , { data: this.state.data});}}><Text>Move to search</Text></TouchableOpacity>
       </View>
     );
   }
