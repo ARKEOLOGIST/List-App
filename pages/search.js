@@ -24,7 +24,8 @@ function Item({ title }) {
         this.state = {
             data: this.props.navigation.getParam('data'),
             search: "",
-            display: []
+            display: [],
+            sheep: []
         }
     }
 
@@ -41,16 +42,16 @@ function Item({ title }) {
 
     search()
     {
-       let sheep = [];
-       for (i =  0 ; i < this.state.data.length ; i++)
-       {
-           if (this.state.data[i].name === this.state.search)
+       let copy = this.state.data;
+       let c = [];
+       copy.map((item) => {
+           if (item.name == this.state.search)
            {
-             sheep.push(this.state.data[i]);
+               c.push(item);
            }
-       }
+       });
        this.setState({
-        display: sheep
+        display: c
     });
     }
 
@@ -60,7 +61,6 @@ function Item({ title }) {
       <View style={styles.container}>
       <Text style={{padding: '1%'}}>&nbsp;</Text>
         <View style={{ width: '100%',flexDirection: 'row' }}><TextInput onFocus= {() => this.setState({search : ""})} value={this.state.search} style={{ width: '80%',padding: '5%',borderWidth: 2,borderColor: 'blue' }} onChangeText={(value) => { this.setState({ search: value })}}></TextInput><TouchableOpacity onPress={this.search.bind(this)} style={{ padding: '5%',backgroundColor: 'blue', opacity: 0.7,borderTopWidth:2,borderBottomWidth:2,borderRightWidth:2,borderColor: 'blue'}}><Text style={{alignSelf: 'center',fontWeight: 'bold'}}>Search</Text></TouchableOpacity></View>
-        
         <Text style={{padding: '1%'}}>&nbsp;</Text>
         <FlatList
           data={this.state.display}
